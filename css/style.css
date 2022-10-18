@@ -1,0 +1,29 @@
+header .flex {
+    justify-content: space-between;
+    padding: 2rem 0 2rem;
+}
+.container {
+    width:80%;
+    margin: auto;
+}
+.hidden {
+    display: none !important;
+}
+.grid {
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.box {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    border: 1px solid rgb(68, 68, 68);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+}
+.selected {
+    background-color: rgb(127, 127, 238);
+}
