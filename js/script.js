@@ -10,21 +10,46 @@ mainButton.addEventListener("click", function () {
     innerBox.addEventListener("click", selected); 
       grid.append(innerBox);
   }
+  let bombs = [];
+  let r = 1;
+  while (r <= 16) {
+    let randomNumber = mathRandom();
+    if (randomNumber[r] != bombs)
+    bombs.push(randomNumber);
+    r++
+    console.log(randomNumber);
 
-  
+  }
+console.log(bombs);
 
 
 })
 
 // FUNCTIONS
-function createBox(innerNumber, numberOfSquaresInRow) {
+/**
+ * It is meant for creating a certain number of boxes/cells
+ * @param {number} innerNumber
+ * @returns {object}
+ */
+function createBox(innerNumber) {
   let box = document.createElement("div");
   box.classList.add("box");
-  // box.style.width = `calc(100% / ${numberOfSquaresInRow})`;
-  // box.style.height = `calc(100% / ${numberOfSquaresInRow})`;
   box.innerHTML = `<span>${innerNumber}</span>`;
   return box;
 }
+/**
+ * It adds a class to a certain element
+ * @param {}
+ * @returns {class}
+ */
 function selected() {
   this.classList.add("selected");
+}
+/**
+ * It is useful to generate a random number within certain parameters
+ * @param {number} innerNumber
+ * @returns {object}
+ */
+function mathRandom () {
+  return Math.floor((Math.random() * 100) + 1);
 }
