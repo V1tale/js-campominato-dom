@@ -2,28 +2,29 @@ const mainButton =document.getElementById("button");
 const grid = document.querySelector(".grid");
 mainButton.addEventListener("click", function () {
   grid.classList.remove("hidden");
+  
+  let bombs = [];
   let innerBox = "";
   for (i = 1; i <= 100; i++) {
     innerBox = createBox(i, 10);
     console.log(innerBox);
     grid.append(innerBox);
-    innerBox.addEventListener("click", selected); 
-      grid.append(innerBox);
-  }
-  let bombs = [];
+    innerBox.addEventListener("click", selected,)
+  } 
+ 
+
   let r = 1;
   while (r <= 16) {
     let randomNumber = mathRandom();
     if (randomNumber[r] != bombs)
     bombs.push(randomNumber);
     r++
-    console.log(randomNumber);
-
   }
-console.log(bombs);
+  console.log(bombs);
+ 
+  })
 
-
-})
+ 
 
 // FUNCTIONS
 /**
@@ -44,9 +45,10 @@ function createBox(innerNumber) {
  */
 function selected() {
   this.classList.add("selected");
+  if (bombs.includes(this.innertext));
 }
 /**
- * It is useful to generate a random number within certain parameters
+ * It is useful to generate a random number within certain parameters..
  * @param {number} innerNumber
  * @returns {object}
  */

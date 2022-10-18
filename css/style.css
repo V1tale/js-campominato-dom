@@ -28,3 +28,6 @@ header .flex {
 .selected {
     background-color: rgb(127, 127, 238);
 }
+.bomb {
+    background-color: rgb(199, 72, 72) !important; 
+}
