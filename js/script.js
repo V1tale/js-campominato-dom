@@ -1,29 +1,20 @@
 const mainButton =document.getElementById("button");
 const grid = document.querySelector(".grid");
+const bombs = generateNumbers(16, 1, 100);
+const box = document.getElementsByClassName(".box");
+console.log(bombs);
 mainButton.addEventListener("click", function () {
   grid.classList.remove("hidden");
   
-  let bombs = [];
-  let innerBox = "";
-  for (i = 1; i <= 100; i++) {
+
+let innerBox = "";
+   for (i = 1; i <= 100; i++) {
     innerBox = createBox(i, 10);
-    console.log(innerBox);
-    grid.append(innerBox);
-    innerBox.addEventListener("click", selected,)
-  } 
- 
-
-  let r = 1;
-  while (r <= 16) {
-    let randomNumber = mathRandom();
-    if (randomNumber[r] != bombs)
-    bombs.push(randomNumber);
-    r++
-  }
-  console.log(bombs);
- 
+     console.log(innerBox);
+     grid.append(innerBox);
+    innerBox.addEventListener("click", selected)
+   } 
   })
-
  
 
 // FUNCTIONS
@@ -44,8 +35,14 @@ function createBox(innerNumber) {
  * @returns {class}
  */
 function selected() {
-  this.classList.add("selected");
-  if (bombs.includes(this.innertext));
+  if (bombs.includes(parseInt(this.textContent))) {
+    this.classList.add("bomb")
+    endgame();
+
+
+  } else {
+    this.classList.add("safe")
+  }
 }
 /**
  * It is useful to generate a random number within certain parameters..
@@ -55,3 +52,32 @@ function selected() {
 function mathRandom () {
   return Math.floor((Math.random() * 100) + 1);
 }
+
+function generateNumbers(numbers, min, max) {
+  const result = [];
+  while (result.length < numbers) {
+    const thisNumber = mathRandom(min, max);
+    if (!result.includes(thisNumber)) {
+      result.push(thisNumber);
+    }
+  }
+  return result;
+}
+function endgame (loseWin) {
+  const units = document.getElementsByClassName("box");
+  for (let i = 0; i < units.length; i++) {
+    const unit = units[i];
+    unit.removeEventListener("click", selected);
+  }
+  if (loseWin === "win") {
+
+    alert("Hai vinto");
+  } else {
+
+    for (let i = 0; i < units.length; i++) {
+      const unit = units[i];
+      const unitNumber = parseInt(unit.textContent);
+      if (bombs.includes(unitNumber)) {
+        unit.classList.add("bomb");
+      }
+    }}}
